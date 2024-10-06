@@ -17,6 +17,7 @@
 <script setup lang="ts">
 import GameGridSector from './GameGridSector.vue'
 import { UsersStore } from '@/stores/UsersStore'
+import { sector_types } from '@/defModels/sectros'
 
 const useUsersStore = UsersStore()
 
@@ -61,6 +62,7 @@ function getStartPlayerXY(player) {
   let rowIndex = Math.floor(Math.random() * props.row)
   sectors[colIndex][rowIndex].player_id = player.id
   sectors[colIndex][rowIndex].colors_type = player.colors_type
+  sectors[colIndex][rowIndex].type = Math.floor(Math.random() * (sector_types.length - 1))
   player.sectors.push(sectors[colIndex][rowIndex].id)
   return player
 }
